@@ -1,0 +1,11 @@
+openai
+requests
+beautifulsoup4
+lxml
+python-dotenv
+pydantic
+tiktoken
+faiss-cpu
+numpy
+pandas
+langchain
