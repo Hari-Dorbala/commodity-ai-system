@@ -9,3 +9,7 @@ faiss-cpu
 numpy
 pandas
 langchain
+faiss-cpu
+numpy
+pandas
+tiktoken
