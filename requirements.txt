@@ -7,3 +7,9 @@ faiss-cpu
 numpy
 pandas
 tiktoken
+pydantic
+tiktoken
+faiss-cpu
+numpy
+pandas
+langchain
