@@ -2,6 +2,7 @@ print("START MAIN")
 
 from agents.news_agent import run_news_agent
 from agents.summarizer_agent import summarize_articles
+from agents.rag_agent import run_rag_agent
 
 print("IMPORT OK")
 
@@ -16,15 +17,37 @@ def main():
 
     summary = summarize_articles(articles)
 
-    print("\nFINAL INTELLIGENCE OUTPUT:\n")
+    print("\nRUNNING AGENT 3 (RAG - LITERATURE REVIEW)\n")
+    
+    intelligence = run_rag_agent(summary)
 
-    for commodity, data in summary.items():
+    print("\n" + "="*60)
+    print("FINAL INTELLIGENCE REPORT WITH LITERATURE INSIGHTS")
+    print("="*60 + "\n")
+
+    for commodity, data in intelligence.items():
         print("-----")
-        print("Commodity:", commodity)
-        print("Sentiment:", data.get("sentiment", "N/A"))
-        print("Drivers:", data.get("drivers", []))
-        print("Summary:", data.get("summary", data.get("analysis")))
-        print("Articles:", data.get("article_count", len(articles)))
+        print(f"Commodity: {commodity}")
+        
+        analysis = data.get("market_analysis", {})
+        print(f"Sentiment: {analysis.get('sentiment', 'N/A')}")
+        print(f"Drivers: {analysis.get('drivers', [])}")
+        print(f"Summary: {analysis.get('summary', analysis.get('analysis', 'N/A'))}")
+        print(f"Articles: {analysis.get('article_count', 'N/A')}")
+        
+        # Literature findings
+        print("\n  [LITERATURE REVIEW FINDINGS]")
+        findings = data.get("literature_review_findings", [])
+        
+        if data.get("has_supporting_evidence"):
+            for i, finding in enumerate(findings, 1):
+                print(f"    {i}. Source: {finding.get('source')}")
+                print(f"       Content: {finding.get('content')}")
+                print(f"       Relevance: {finding.get('relevance_score'):.2%}")
+        else:
+            print("    No relevant literature found.")
+        
+        print()
 
 if __name__ == "__main__":
     main()

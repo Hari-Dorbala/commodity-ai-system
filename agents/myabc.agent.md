@@ -15,7 +15,7 @@ The project currently contains:
 
 - `main.py`: orchestrates the workflow by running the news agent and summarizer agent.
 - `agents/news_agent.py`: fetches commodity-related news from GDELT and RSS feeds, tags articles by commodity, and deduplicates them.
-- `agents/summarizer_agent.py`: loads a local LLM model (`Qwen/Qwen2.5-1.5B-Instruct`), groups articles by commodity, and generates sentiment/drivers/outlook analysis.
+- `agents/summarizer_agent.py`: loads a local LLM model (`Qwen/Qwen2.5-0.5B-Instruct`), groups articles by commodity, and generates sentiment/drivers/outlook analysis.
 - `tools/gdelt_news.py`: queries the GDELT API and returns recent articles for a query.
 - `tools/rss_news.py`: parses RSS feeds for market news.
 - `config/`: currently empty, reserved for project configuration.

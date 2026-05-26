@@ -5,9 +5,9 @@ import torch
 # -----------------------------
 # MODEL LOAD (QWEN)
 # -----------------------------
-model_name = "Qwen/Qwen2.5-1.5B-Instruct"
+model_name = "Qwen/Qwen2.5-0.5B-Instruct"
 
-print("Loading Qwen model... (first run will download ~2-4GB)")
+print("Loading Qwen model... (first run will download ~1GB)")
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
