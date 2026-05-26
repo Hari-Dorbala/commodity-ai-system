@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 from typing import List, Dict, Any
-from agents.rag_agent import RAGAgent
+# RAG agent import is deferred to avoid heavy dependencies at import-time
 # Single-tab simplified UI: select commodity, show news summary, then 30d and 180d predictions
 from tools.rss_news import fetch_rss_news
 from tools.gdelt_news import search_gdelt
@@ -14,6 +14,12 @@ import plotly.graph_objects as go
 def load_rag_agent():
     try:
         with st.spinner("Loading RAG model... This may take a moment..."):
+            # import lazily so app can start without RAG/transformers installed
+            try:
+                from agents.rag_agent import RAGAgent
+            except Exception as imp_e:
+                st.warning(f"RAG agent not available: {imp_e}")
+                return None
             rag = RAGAgent(pdf_directory="data/literature_reviews")
             return rag
     except Exception as e:
